@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbujavjfviy6o"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_2burc"]
+[ext_resource type="Texture2D" uid="uid://djql30beftmp1" path="res://assets/sprites/FLYsprite.png" id="2_gvebk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63ptv"]
+radius = 61.2046
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 7
+script = ExtResource("1_2burc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_63ptv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.499999, -8.10623e-06)
+scale = Vector2(6.45, 6.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("2_gvebk")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
